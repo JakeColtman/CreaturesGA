@@ -6,7 +6,7 @@ TODO: complete abstract GA implementation for creatures. Add concretes for trait
 
 Age of creature = generations
 
-	 i.e. Older creatures have more extreme matching to environment
+i.e. Older creatures have more extreme matching to environment
 
 	traitArray corresponding to given trait set
 	  [canFly = 8,
