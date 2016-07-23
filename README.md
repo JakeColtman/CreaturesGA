@@ -8,41 +8,41 @@ Age of creature = generations
 
 	 i.e. Older creatures have more extreme matching to environment
 
-traitArray corresponding to given trait set
-  [canFly = 8,
-  canJump = 2] etc ...
-  
+	traitArray corresponding to given trait set
+	  [canFly = 8,
+	  canJump = 2] etc ...
+	  
+	
+	biome = hills
+	
+	type = isTallTerrain
+	
+	creature {
+	
+	
+	canJump = 5
+	
+	
+	canFly = 2
+	
+	
+	}
+	
+	
+	if tallTerrain {
+	
+	
+	  canFly*5 = 10
+	
+	
+	  canJump*3 = 15
+	
+	
+	}
+	
+	mobility fitness score = 25
 
-biome = hills
+	primary locomotion isJump
 
-type = isTallTerrain
-
-creature {
-
-
-canJump = 5
-
-
-canFly = 2
-
-
-}
-
-
-if tallTerrain {
-
-
-  canFly*5 = 10
-
-
-  canJump*3 = 15
-
-
-}
-
-mobility fitness score = 25
-
-priamry locomotion isJump
-
-  etc ...
+ etc ...
   
