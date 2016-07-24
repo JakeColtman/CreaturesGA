@@ -9,6 +9,10 @@ class Map:
         self.grid = grid
 
 
+def manhatten_distance(first_square: Square, second_square: Square) -> int:
+    return abs(first_square.x_pos - second_square.x_pos) + abs(first_square.y_pos - second_square.y_pos)
+
+
 class MapFactory:
     def create_random_map(self, size):
         grid = []
