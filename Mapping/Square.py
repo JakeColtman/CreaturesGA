@@ -1,11 +1,4 @@
-from enum import Enum
-
-
-class Terrain(Enum):
-    river = 1
-    sea = 2
-    plain = 3
-    mountain = 4
+from Mapping.Terrain import Terrain
 
 
 class Square:
