@@ -1,5 +1,8 @@
 from enum import Enum
 from itertools import groupby
+from math import sqrt
+from statistics import mean
+
 
 class Terrain(Enum):
     river = 1
@@ -33,3 +36,13 @@ def create_terrain_distribution(squares):
     return TerrainDistribution(river, sea, plain, mountain)
 
 
+def average_distribution(squares):
+    return TerrainDistribution(
+        mean([x.terrain.sea for x in squares]),
+        mean([x.terrain.river for x in squares]),
+        mean([x.terrain.plain for x in squares]),
+        mean([x.terrain.mountain for x in squares])
+    )
+
+def purity(region):
+    return sqrt(region.difference_to_distribution(region))
