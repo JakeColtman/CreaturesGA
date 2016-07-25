@@ -63,9 +63,9 @@ class MapFactory:
 
     def create_river_map(self):
         grid = []
-        for x in range(8):
+        for x in range(5):
             row = []
-            for y in range(8):
+            for y in range(5):
                 if x < 2 and y < 2:
                     row.append(Square(x, y, Terrain.river))
                 else:

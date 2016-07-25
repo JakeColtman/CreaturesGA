@@ -19,25 +19,26 @@ def square_in_region(region, square):
 def add_core_regions_to_map(world_map: Map) -> Map:
     def point_in_region(region: Region, square: Square) -> bool:
         if not square.terrain == region.squares[0].terrain:
+            print(False)
             return False
         else:
             min_distance = min([manhatten_distance(region_square, square) for region_square in region.squares])
+            print(min_distance)
             return min_distance == 1
 
     regions = []
-    region_id = 1
 
     for row in world_map.grid:
         for col in row:
-            for region in regions:
+            print("Starting, ", col.x_pos, " - ", col.y_pos)
+            for ii, region in enumerate(regions):
                 if point_in_region(region, col):
                     region.squares.append(col)
-                    col.region = region_id
+                    col.region = ii
                     break
             else:
                 regions.append(Region(world_map, [col]))
-                region_id += 1
-                col.region = region_id
+                col.region = len(regions) - 1
     return world_map
 
 
