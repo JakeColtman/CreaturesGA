@@ -42,7 +42,6 @@ class Map:
         for row in self.grid:
             print(",".join([str(x.region) for x in row]))
         print("----")
-        sleep(2)
 
 def manhatten_distance(first_square: Square, second_square: Square) -> int:
     return abs(first_square.x_pos - second_square.x_pos) + abs(first_square.y_pos - second_square.y_pos)
@@ -63,9 +62,9 @@ class MapFactory:
 
     def create_river_map(self):
         grid = []
-        for x in range(5):
+        for x in range(10):
             row = []
-            for y in range(5):
+            for y in range(10):
                 if x < 2 and y < 2:
                     row.append(Square(x, y, Terrain.river))
                 else:

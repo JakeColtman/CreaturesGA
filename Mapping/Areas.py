@@ -30,7 +30,6 @@ def add_core_regions_to_map(world_map: Map) -> Map:
 
     for row in world_map.grid:
         for col in row:
-            print("Starting, ", col.x_pos, " - ", col.y_pos)
             for ii, region in enumerate(regions):
                 if point_in_region(region, col):
                     region.squares.append(col)
@@ -49,27 +48,16 @@ def modify_regions(world_map: Map):
         sqs = regions[region]
         region_dist = average_distribution([x.surrounding_terrain for x in sqs])
         region_distributions[region] = region_dist
-    for region in region_distributions:
-        print(region, region_distributions[region].normalized_weights())
     update = False
     for row in world_map.grid:
         for col in row:
             dist = col.surrounding_terrain
-            print(dist.normalized_weights())
             surrounding_squares = [x for x in world_map.get_area_around_coordinate(col.x_pos, col.y_pos, 1)]
-            #print(surrounding_squares)
             surrounding_regions = [x.region for x in surrounding_squares]
-            #print(surrounding_regions)
             surrounding_distributions = [region_distributions[x] for x in surrounding_regions]
             distances = [x.difference_to_distribution(dist) for x in surrounding_distributions]
-            print(distances)
-            print([x.normalized_weights() for x in surrounding_distributions])
             min_index = min(enumerate(distances), key=itemgetter(1))[0]
-            print(surrounding_regions)
-            print(min_index)
-
             new_region = surrounding_regions[min_index]
-            print(new_region, col.region)
             if new_region != col.region:
                 update = True
             col.region = new_region
