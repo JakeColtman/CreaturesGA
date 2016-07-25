@@ -36,12 +36,12 @@ def create_terrain_distribution(squares):
     return TerrainDistribution(river, sea, plain, mountain)
 
 
-def average_distribution(squares):
+def average_distribution(distributions):
     return TerrainDistribution(
-        mean([x.terrain.sea for x in squares]),
-        mean([x.terrain.river for x in squares]),
-        mean([x.terrain.plain for x in squares]),
-        mean([x.terrain.mountain for x in squares])
+        mean([x.normalized_weights()[0] for x in distributions]),
+        mean([x.normalized_weights()[1] for x in distributions]),
+        mean([x.normalized_weights()[2] for x in distributions]),
+        mean([x.normalized_weights()[3] for x in distributions])
     )
 
 def purity(region):
