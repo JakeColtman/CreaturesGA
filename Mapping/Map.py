@@ -5,7 +5,6 @@ from typing import Iterable
 import itertools
 from time import sleep
 
-
 class Map:
     def __init__(self, grid):
         self.grid = grid
@@ -45,29 +44,3 @@ class Map:
 
 def manhatten_distance(first_square: Square, second_square: Square) -> int:
     return abs(first_square.x_pos - second_square.x_pos) + abs(first_square.y_pos - second_square.y_pos)
-
-
-class MapFactory:
-    def create_random_map(self, size):
-        grid = []
-        for x in range(size):
-            row = []
-            for y in range(size):
-                row.append(Square(x, y, self.choose_random_terrain()))
-            grid.append(row)
-        return Map(grid)
-
-    def choose_random_terrain(self):
-        return choice(list(Terrain))
-
-    def create_river_map(self):
-        grid = []
-        for x in range(10):
-            row = []
-            for y in range(10):
-                if x < 2 and y < 2:
-                    row.append(Square(x, y, Terrain.river))
-                else:
-                    row.append(Square(x, y, Terrain.sea))
-            grid.append(row)
-        return Map(grid)

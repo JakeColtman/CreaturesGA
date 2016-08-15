@@ -1,4 +1,4 @@
-from Mapping.Terrain import Terrain
+from Terrain import Terrain
 
 
 class Square:
