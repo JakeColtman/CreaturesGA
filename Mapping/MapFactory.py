@@ -3,7 +3,7 @@ from Terrain import create_terrain_distribution
 from random import choice
 from typing import Iterable
 
-from map_pb2 import Cell, Terrain, Row, Map
+from map_pb2 import Cell, Terrain, Row, Map, RIVER, SEA
 
 class MapFactory:        
 
@@ -24,13 +24,21 @@ class MapFactory:
         return choice(list(Terrain.values()))
 
     def create_river_map(self):
-        grid = []
+        mappy = Map()
         for x in range(10):
-            row = []
+            row = Row()
             for y in range(10):
                 if x < 2 and y < 2:
-                    row.append(Square(x, y, Terrain.river))
+                    cell = Cell()
+                    cell.x_pos = x
+                    cell.y_pos = y
+                    cell.terrain = RIVER
+                    row.cells.extend([cell])
                 else:
-                    row.append(Square(x, y, Terrain.sea))
-            grid.append(row)
-        return Map(grid)
+                    cell = Cell()
+                    cell.x_pos = x
+                    cell.y_pos = y
+                    cell.terrain = SEA
+                    row.cells.extend([cell])
+            mappy.rows.extend([row])
+        return mappy

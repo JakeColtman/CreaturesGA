@@ -2,6 +2,9 @@ enum Terrain {
   UNKNOWN = 0;
   GRASS = 1;
   RIVER = 2;
+  SEA = 3;
+  MOUNTAIN = 4;
+  PLAIN = 5;
 }
 
 message Cell {

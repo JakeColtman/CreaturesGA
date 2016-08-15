@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='map.proto',
   package='',
-  serialized_pb=_b('\n\tmap.proto\"?\n\x04\x43\x65ll\x12\x19\n\x07terrain\x18\x01 \x01(\x0e\x32\x08.Terrain\x12\r\n\x05x_pos\x18\x02 \x01(\x05\x12\r\n\x05y_pos\x18\x03 \x01(\x05\"\x1b\n\x03Row\x12\x14\n\x05\x63\x65lls\x18\x01 \x03(\x0b\x32\x05.Cell\"%\n\x03Map\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\x04rows\x18\x02 \x03(\x0b\x32\x04.Row*,\n\x07Terrain\x12\x0b\n\x07UNKNOWN\x10\x00\x12\t\n\x05GRASS\x10\x01\x12\t\n\x05RIVER\x10\x02')
+  serialized_pb=_b('\n\tmap.proto\"?\n\x04\x43\x65ll\x12\x19\n\x07terrain\x18\x01 \x01(\x0e\x32\x08.Terrain\x12\r\n\x05x_pos\x18\x02 \x01(\x05\x12\r\n\x05y_pos\x18\x03 \x01(\x05\"\x1b\n\x03Row\x12\x14\n\x05\x63\x65lls\x18\x01 \x03(\x0b\x32\x05.Cell\"%\n\x03Map\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\x04rows\x18\x02 \x03(\x0b\x32\x04.Row*N\n\x07Terrain\x12\x0b\n\x07UNKNOWN\x10\x00\x12\t\n\x05GRASS\x10\x01\x12\t\n\x05RIVER\x10\x02\x12\x07\n\x03SEA\x10\x03\x12\x0c\n\x08MOUNTAIN\x10\x04\x12\t\n\x05PLAIN\x10\x05')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -41,11 +41,23 @@ _TERRAIN = _descriptor.EnumDescriptor(
       name='RIVER', index=2, number=2,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SEA', index=3, number=3,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MOUNTAIN', index=4, number=4,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PLAIN', index=5, number=5,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=146,
-  serialized_end=190,
+  serialized_end=224,
 )
 _sym_db.RegisterEnumDescriptor(_TERRAIN)
 
@@ -53,6 +65,9 @@ Terrain = enum_type_wrapper.EnumTypeWrapper(_TERRAIN)
 UNKNOWN = 0
 GRASS = 1
 RIVER = 2
+SEA = 3
+MOUNTAIN = 4
+PLAIN = 5
 
 
 

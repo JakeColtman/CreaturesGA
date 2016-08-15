@@ -14,5 +14,12 @@ def home():
     copy_pb_to_dict(output, mappy)
     return json.dumps(output)
 
+@app.route('/river', methods=['GET'])
+def river():
+    output = {}
+    mappy = MapFactory().create_river_map()
+    copy_pb_to_dict(output, mappy)
+    return json.dumps(output)
+
 if __name__ == '__main__':
     app.run(debug=True)
