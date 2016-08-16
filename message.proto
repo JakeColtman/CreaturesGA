@@ -1,0 +1,7 @@
+import "Market/commodities.proto";
+import "Market/trade.proto";
+
+message Message {
+    optional Commodity commodity = 1;
+    optional Trade trade = 2;
+}

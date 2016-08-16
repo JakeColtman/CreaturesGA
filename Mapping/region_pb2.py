@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import map_pb2
+import Mapping.map_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='region.proto',
   package='',
-  serialized_pb=_b('\n\x0cregion.proto\x1a\tmap.proto\"J\n\x0bTerrainDist\x12\r\n\x05river\x18\x01 \x01(\x02\x12\x0b\n\x03sea\x18\x02 \x01(\x02\x12\x10\n\x08mountain\x18\x03 \x01(\x02\x12\r\n\x05plain\x18\x04 \x01(\x02\"I\n\x06Region\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x14\n\x05\x63\x65lls\x18\x02 \x03(\x0b\x32\x05.Cell\x12\x1d\n\x07terrain\x18\x03 \x01(\x0b\x32\x0c.TerrainDist')
+  serialized_pb=_b('\n\x0cregion.proto\x1a\x11Mapping/map.proto\"J\n\x0bTerrainDist\x12\r\n\x05river\x18\x01 \x01(\x02\x12\x0b\n\x03sea\x18\x02 \x01(\x02\x12\x10\n\x08mountain\x18\x03 \x01(\x02\x12\r\n\x05plain\x18\x04 \x01(\x02\"I\n\x06Region\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x14\n\x05\x63\x65lls\x18\x02 \x03(\x0b\x32\x05.Cell\x12\x1d\n\x07terrain\x18\x03 \x01(\x0b\x32\x0c.TerrainDist')
   ,
-  dependencies=[map_pb2.DESCRIPTOR,])
+  dependencies=[Mapping.map_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -73,8 +73,8 @@ _TERRAINDIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27,
-  serialized_end=101,
+  serialized_start=35,
+  serialized_end=109,
 )
 
 
@@ -117,11 +117,11 @@ _REGION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=103,
-  serialized_end=176,
+  serialized_start=111,
+  serialized_end=184,
 )
 
-_REGION.fields_by_name['cells'].message_type = map_pb2._CELL
+_REGION.fields_by_name['cells'].message_type = Mapping.map_pb2._CELL
 _REGION.fields_by_name['terrain'].message_type = _TERRAINDIST
 DESCRIPTOR.message_types_by_name['TerrainDist'] = _TERRAINDIST
 DESCRIPTOR.message_types_by_name['Region'] = _REGION

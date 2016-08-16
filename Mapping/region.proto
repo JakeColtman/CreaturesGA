@@ -1,4 +1,4 @@
-import "map.proto";
+import "Mapping/map.proto";
 
 message TerrainDist {
     optional float river = 1;
