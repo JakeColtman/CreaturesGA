@@ -13,13 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+import trade_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='commodities.proto',
   package='',
-  serialized_pb=_b('\n\x11\x63ommodities.proto\"I\n\tCommodity\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nelasticity\x18\x02 \x01(\x02\x12\x0e\n\x06rarity\x18\x03 \x01(\x02\x12\n\n\x02id\x18\x04 \x01(\x05')
-)
+  serialized_pb=_b('\n\x11\x63ommodities.proto\x1a\x0btrade.proto\"I\n\tCommodity\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nelasticity\x18\x02 \x01(\x02\x12\x0e\n\x06rarity\x18\x03 \x01(\x02\x12\n\n\x02id\x18\x04 \x01(\x05\"?\n\x07Message\x12\x1d\n\tcommodity\x18\x01 \x01(\x0b\x32\n.Commodity\x12\x15\n\x05trade\x18\x02 \x01(\x0b\x32\x06.Trade')
+  ,
+  dependencies=[trade_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -71,11 +73,51 @@ _COMMODITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21,
-  serialized_end=94,
+  serialized_start=34,
+  serialized_end=107,
 )
 
+
+_MESSAGE = _descriptor.Descriptor(
+  name='Message',
+  full_name='Message',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='commodity', full_name='Message.commodity', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='trade', full_name='Message.trade', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=109,
+  serialized_end=172,
+)
+
+_MESSAGE.fields_by_name['commodity'].message_type = _COMMODITY
+_MESSAGE.fields_by_name['trade'].message_type = trade_pb2._TRADE
 DESCRIPTOR.message_types_by_name['Commodity'] = _COMMODITY
+DESCRIPTOR.message_types_by_name['Message'] = _MESSAGE
 
 Commodity = _reflection.GeneratedProtocolMessageType('Commodity', (_message.Message,), dict(
   DESCRIPTOR = _COMMODITY,
@@ -83,6 +125,13 @@ Commodity = _reflection.GeneratedProtocolMessageType('Commodity', (_message.Mess
   # @@protoc_insertion_point(class_scope:Commodity)
   ))
 _sym_db.RegisterMessage(Commodity)
+
+Message = _reflection.GeneratedProtocolMessageType('Message', (_message.Message,), dict(
+  DESCRIPTOR = _MESSAGE,
+  __module__ = 'commodities_pb2'
+  # @@protoc_insertion_point(class_scope:Message)
+  ))
+_sym_db.RegisterMessage(Message)
 
 
 # @@protoc_insertion_point(module_scope)

@@ -13,15 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import Mapping.map_pb2
+import map_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='region.proto',
   package='',
-  serialized_pb=_b('\n\x0cregion.proto\x1a\x11Mapping/map.proto\"J\n\x0bTerrainDist\x12\r\n\x05river\x18\x01 \x01(\x02\x12\x0b\n\x03sea\x18\x02 \x01(\x02\x12\x10\n\x08mountain\x18\x03 \x01(\x02\x12\r\n\x05plain\x18\x04 \x01(\x02\"I\n\x06Region\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x14\n\x05\x63\x65lls\x18\x02 \x03(\x0b\x32\x05.Cell\x12\x1d\n\x07terrain\x18\x03 \x01(\x0b\x32\x0c.TerrainDist')
+  serialized_pb=_b('\n\x0cregion.proto\x1a\tmap.proto\"J\n\x0bTerrainDist\x12\r\n\x05river\x18\x01 \x01(\x02\x12\x0b\n\x03sea\x18\x02 \x01(\x02\x12\x10\n\x08mountain\x18\x03 \x01(\x02\x12\r\n\x05plain\x18\x04 \x01(\x02\"I\n\x06Region\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x14\n\x05\x63\x65lls\x18\x02 \x03(\x0b\x32\x05.Cell\x12\x1d\n\x07terrain\x18\x03 \x01(\x0b\x32\x0c.TerrainDist\"\"\n\x07Message\x12\x17\n\x06region\x18\x01 \x01(\x0b\x32\x07.Region')
   ,
-  dependencies=[Mapping.map_pb2.DESCRIPTOR,])
+  dependencies=[map_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -73,8 +73,8 @@ _TERRAINDIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=35,
-  serialized_end=109,
+  serialized_start=27,
+  serialized_end=101,
 )
 
 
@@ -117,14 +117,46 @@ _REGION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=111,
-  serialized_end=184,
+  serialized_start=103,
+  serialized_end=176,
 )
 
-_REGION.fields_by_name['cells'].message_type = Mapping.map_pb2._CELL
+
+_MESSAGE = _descriptor.Descriptor(
+  name='Message',
+  full_name='Message',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='region', full_name='Message.region', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=178,
+  serialized_end=212,
+)
+
+_REGION.fields_by_name['cells'].message_type = map_pb2._CELL
 _REGION.fields_by_name['terrain'].message_type = _TERRAINDIST
+_MESSAGE.fields_by_name['region'].message_type = _REGION
 DESCRIPTOR.message_types_by_name['TerrainDist'] = _TERRAINDIST
 DESCRIPTOR.message_types_by_name['Region'] = _REGION
+DESCRIPTOR.message_types_by_name['Message'] = _MESSAGE
 
 TerrainDist = _reflection.GeneratedProtocolMessageType('TerrainDist', (_message.Message,), dict(
   DESCRIPTOR = _TERRAINDIST,
@@ -139,6 +171,13 @@ Region = _reflection.GeneratedProtocolMessageType('Region', (_message.Message,),
   # @@protoc_insertion_point(class_scope:Region)
   ))
 _sym_db.RegisterMessage(Region)
+
+Message = _reflection.GeneratedProtocolMessageType('Message', (_message.Message,), dict(
+  DESCRIPTOR = _MESSAGE,
+  __module__ = 'region_pb2'
+  # @@protoc_insertion_point(class_scope:Message)
+  ))
+_sym_db.RegisterMessage(Message)
 
 
 # @@protoc_insertion_point(module_scope)

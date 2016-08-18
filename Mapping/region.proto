@@ -1,4 +1,4 @@
-import "Mapping/map.proto";
+import "map.proto";
 
 message TerrainDist {
     optional float river = 1;
@@ -13,3 +13,6 @@ message Region {
     optional TerrainDist terrain = 3;
 }
 
+message Message {
+    optional Region region = 1;
+}
