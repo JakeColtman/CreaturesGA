@@ -1,4 +1,4 @@
-from Terrain import Terrain
+from Mapping.map_pb2 import Terrain
 
 
 class Square:

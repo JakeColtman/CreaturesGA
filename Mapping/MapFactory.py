@@ -4,7 +4,6 @@ from random import choice
 from typing import Iterable
 
 from map_pb2 import Cell, Terrain, Row, Map, RIVER, SEA
-
 import redis
 
 class MapRepository:  
