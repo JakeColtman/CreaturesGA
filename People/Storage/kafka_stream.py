@@ -15,3 +15,4 @@ for message in consumer:
     print(movement.direction)
     new_pos = pos_repo.update_position(movement)
     print(new_pos)
+    producer.send("position", new_pos.SerializeToString())

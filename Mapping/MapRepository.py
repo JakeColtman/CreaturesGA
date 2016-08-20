@@ -1,12 +1,10 @@
-from Square import Square
-from Terrain import create_terrain_distribution
 from random import choice
 from typing import Iterable
 from Mapping.MapFactory import MapFactory
 from Mapping.Map import Map
-from Mapping.move_pb2 import Movement
+from People.Interface.move_pb2 import UpdatedPosition
+from Mapping.Interface.map_pb2 import Cell, Terrain, Row, Map, RIVER, SEA, MapFragment
 import redis
-from kafka import KafkaProducer
 
 class MapRepository:  
 
@@ -14,25 +12,36 @@ class MapRepository:
         self.conn = conn
         self.factory = factory
         self.cache = {}
-        self.kafka = KafkaProducer(bootstrap_servers=['0.0.0.0:9092'])
 
     def new_map(self):
+        
+        def generate_key(key, x, y):
+            return "map:{0}:x:{1}:y:{2}".format(str(key), str(x), str(y))
+
         map = self.factory.create_random_map_data(10)
         map_id = self.conn.incr("map:id")
-        self.conn.set("map:{0}".format(map_id), map.SerializeToString())
+        for row in map.rows:
+            for cell in row.cells:
+                self.conn.set(generate_key(key, cell.x_pos, cell.y_pos), cell.terrain)
         return map_id
 
-    def get_map(self, map_id):
-        if map_id in self.cache:
-            return self.cache[map_id]
+    def choose_random_terrain(self):
+        return choice(list(Terrain.values()))
 
-        mappy = Map()
-        contents = self.conn.get("mappy:{0}".format(map_id))
-        print(contents)
-        print(type(contents))
-        mappy.ParseFromString(contents)
-        print(mappy)
-        return mappy
-
-    def register_move(self, movemet: Movement) -> True:
-        producer.send("movement", movement)
+    def get_fragment(self, update: UpdatedPosition):
+        terrain = self.conn.get("map:{0}:x:{1}:y:{2}".format(str(update.p_id), str(update.x_pos), str(update.y_pos)))
+        print(terrain)
+        if terrain is None:
+            terrain = self.choose_random_terrain()
+            self.conn.set("map:{0}:x:{1}:y:{2}".format(str(update.p_id), str(update.x_pos), str(update.y_pos)), terrain)
+        else:
+            terrain = int(terrain)
+        print(terrain)
+        cell = Cell()
+        cell.x_pos = update.x_pos
+        cell.y_pos = update.y_pos
+        cell.terrain = terrain
+        fragment = MapFragment()
+        fragment.id = update.p_id
+        fragment.cells.extend([cell])
+        return fragment

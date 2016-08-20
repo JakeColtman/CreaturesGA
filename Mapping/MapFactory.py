@@ -1,16 +1,9 @@
-from Square import Square
-from Terrain import create_terrain_distribution
 from random import choice
 from typing import Iterable
-
-from map_pb2 import Cell, Terrain, Row, Map, RIVER, SEA
+from Mapping.Interface.map_pb2 import Cell, Terrain, Row, Map, RIVER, SEA
 import redis
 
 class MapFactory:  
-
-    def hydrate_map_from_bytes(self, map_data):
-        map = Map()
-        map.ParseFromString(map_data)
 
     def create_random_map_data(self, size):
         mappy = Map()
