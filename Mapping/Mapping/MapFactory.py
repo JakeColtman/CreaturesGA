@@ -8,10 +8,6 @@ import redis
 
 class MapFactory:  
 
-    def hydrate_map_from_bytes(self, map_data):
-        map = Map()
-        map.ParseFromString(map_data)
-
     def create_random_map_data(self, size):
         mappy = Map()
         for x in range(size):

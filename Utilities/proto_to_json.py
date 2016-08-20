@@ -1,4 +1,3 @@
-
 from google.protobuf.internal.containers import BaseContainer
 from google.protobuf.reflection import GeneratedProtocolMessageType
 from google.protobuf.message import Message as ProtocolMessage, DecodeError

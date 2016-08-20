@@ -1,13 +1,11 @@
-from Mapping.Square import Square
-from Mapping.Terrain import Terrain, create_terrain_distribution
 from random import choice
 from typing import Iterable
 import itertools
 from time import sleep
-from Mapping.move_pb2 import LEFT, RIGHT, UP, DOWN
+from Mapping.map_pb2 import Map
 
-class Map:
-    def __init__(self, conn, slug):
+class World:
+    def __init__(self, map_data : Map):
         self.slug = slug
         self.conn = conn
         self.pos_key = "pos:{0}".format(self.slug)
