@@ -1,3 +1,5 @@
+import "map.proto";
+
 enum Direction {
   LEFT = 1;
   RIGHT = 2;
@@ -5,9 +7,9 @@ enum Direction {
   DOWN = 4;
 }
 
-message Movement {
+message MovementRequest {
   optional int32 p_id = 1;
-  optional Direction direction = 2;
+  optional Cell destination = 2;
 }
 
 message UpdatedPosition {

@@ -1,6 +1,6 @@
 from kafka import KafkaConsumer, KafkaProducer
 from People.Storage.PositionCache import PositionCache
-from People.Interface.move_pb2 import Movement
+from People.Interface.move_pb2 import MovementRequest
 from time import sleep
 consumer = KafkaConsumer('movement', bootstrap_servers=['0.0.0.0:9092'])
 producer = KafkaProducer(bootstrap_servers=['0.0.0.0:9092'])

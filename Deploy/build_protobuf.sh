@@ -1,9 +1,14 @@
 #/bin/bash 
 
 #Market
-protoc -I=../Market --python_out=../Market ../Market/commodities.proto 
-protoc -I=. --python_out=. move.proto
+cd ../Market/Interface
+protoc -I=. --python_out=. commodities.proto 
 
 #Mapping
-protoc -I=../Mapping --python_out=../Mapping ../Mapping/map.proto
-protoc -I=../Mapping --python_out=../Mapping ../Mapping/region.proto
+cd ../../Mapping/Interface
+protoc -I=. --python_out=. --proto_path=. map.proto 
+protoc -I=. --python_out=. region.proto 
+
+#People
+cd ../../People/Interface
+protoc -I=. --python_out=. --proto_path=../../Mapping/Interface move.proto 
